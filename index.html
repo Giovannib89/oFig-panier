@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Shop oFig</title>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <h1 class="logo">
+                oFig
+                <span class="logo__desc">Figurines et statuettes</span>
+            </h1>
+            <h2 class="grey">
+                Figurines sur le thème
+                <strong class="grey__current">Final Fantasy</strong>
+            </h2>
+        </header>
+        <main>
+            <aside class="sales__fixed">soldes</aside>
+            <div id="panier">
+                <h3 class="item__content__name">Votre panier</h3>
+                <table>
+                    <thead>
+                        <th>Figurine</th>
+                        <th>Prix unitaire</th>
+                        <th>Quantité</th>
+                    </thead>
+                    <tbody>
+                        <tr class="gris">
+                        <td>Cloud Strife</td>
+                        <td> 59 €</td>
+                        <td>
+                            <form class="quantité gris" action="">
+                                <input class="nombre" type="number" id="cs-total" name="cs-total" min="0" max="10">
+                                <input class="annuler" type="reset" >
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tifa Lockhart</td>
+                        <td>69 €</td>
+                        <td>
+                            <form class="quantité" action="">
+                                <input class="nombre" type="number" id="cs-total" name="cs-total" min="0" max="10">
+                                <input class="annuler bis" type="reset" >
+                            </form>
+                        </td>
+                    </tr>
+                    <tr class="gris">
+                        <td>Barret Wallace</td>
+                        <td>69 €</td>
+                        <td>
+                            <form class="quantité gris" action="">
+                                <input class="nombre" type="number" id="cs-total" name="cs-total" min="0" max="10">
+                                <input class="annuler" type="reset" >
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                    
+                    <tfoot>
+                        <tr>
+                            
+                            <td colspan="2" class="total__com">total de la commande :</td>
+                            <td class="total">197</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <form id="form" action="">
+                    <fieldset>
+                        <legend class="item__content__name">Préférences de livraison</legend>
+                        <div class="where">
+
+                            <section class="gauche">
+                                <div class="input-adress">
+                                    <p class="label">Où souhaitez-vous être livré ?</p>
+                                    <div class="choix">
+                                        <input type="radio" id="my-home" name="adresse" value="my-home" checked>
+                                        <label for="my-home">Mon adresse courante</label>
+                                    </div>
+                                    <div class="choix">
+                                        <input type="radio" id="other" name="adresse" value="other">
+                                        <label for="other">Autre adresse</label>
+                                    </div>
+
+                                </div>
+                                <div class="options">
+                                    <p class="label">Options</p>
+                                    <span class="choix">
+                                        <input type="checkbox" name="suivi-sms" id="suivi-sms">
+                                        <label class="little--label" for="suivi-sms">Suivi de livraison par sms
+                                            (inclus)</label>
+                                    </span>
+                                    <span class="choix">
+                                        <input type="checkbox" name="sav" id="sav">
+                                        <label class="little--label" for="sav">Satisfait ou remboursé (+ 2
+                                            euros)</label>
+                                    </span>
+                                    <span class="choix">
+                                        <input type="checkbox" name="garantie" id="garantie">
+                                        <label class="little--label" for="garantie">Garantie 2 ans (+ 10 euros)</label>
+                                    </span>
+
+
+
+                                </div>
+                            </section>
+                            <section class="droite">
+                                <div class="adresse">
+                                    <label class="label" for="adresse">Adresse</label>
+                                    <label class="little--label" for="rue">Rue</label>
+                                    <input class="champ" type="text" id="rue" name="rue">
+                                    <label class="little--label" for="code-postal">Code postal</label>
+                                    <input class="champ" type="text" id="code-postal" name="code-postal">
+                                    <label  class="little--label" for="ville">Ville</label>
+                                    <input class="champ" type="text" id="ville" name="ville">
+                                </div>
+                                <div class="info-compl">
+                                    <label class="label" for="info-compl">Informations complèmentaires</label>
+                                    <label class="little--label" for="int-bat-etc">interphone, bâtiment, etc</label>
+                                    <textarea class="champ" name="int-bat-etc" id="int-bat-etc" rows="5"></textarea>
+                                </div>
+                            </section>
+                        </div>
+                    </fieldset>
+
+                </form>
+                <div class="bas">
+                    <div class="montant--total">
+
+                    <p class="total__com">Montant total à régler</p>
+                    <p class="total">197 €</p>
+
+                    </div>
+                </div> 
+                <div class="bas">
+                    <div class="validation">
+
+                        <p class="continue">Continuer vos achats</p>
+                        <p class="valider">valider et payer</p>
+
+                    </div>
+                
+                </div>
+                    
+                
+            </div>
+
+        </main>
+        <footer class="grey grey--footer">
+            oFig - toutes les images sont sous copyright SquareEnix
+        </footer>
+    </div>
+</body>
+
+</html>

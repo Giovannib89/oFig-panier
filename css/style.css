@@ -1,0 +1,356 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+#container {
+    width: 850px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #c80000;
+    color: white;
+    /* on veut faire en sorte que le header du site soit toujours visible même si on scrolle jusqu'en bas de la liste des figurines
+    pour fixer sa position, on utilise la valeur fixed de la propriété position
+    on a comme référence la page entière ET l'élement est sorti du flow naturel de la page HTML
+    on doit donc compléter les propriétés CSS en indiquant qu'on souhaite un positionnement à partir du haut de la page (0px)
+    */
+    position: fixed;
+    top: 0;
+    /* pour coller avec l'affichage qu'on avait avant, on indique la largeur de l'élément et on réapplique la marge automatique pour que le navigateur center le header dans la page*/
+    width: 850px;
+    margin: 0 auto;
+    /* pour être sûr que le header restera bien par dessus les autres éléments, on peut indiquer une valeur à la propriété z-index */
+    z-index: 1;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: 700;
+    padding: 0.5em;
+}
+
+.logo__desc {
+    /* rem prend pour référence la taille de l'élément racine (pas le parent mais bien l'ancètre de tous les éléments : la balise <html>)
+    si rien n'est défini sur cette balise, on prend pour référence la taille de font par défaut du navigateur (16px) */
+    font-size: 0.8rem;
+}
+
+.grey {
+    background-color: #666;
+    padding: .5em 0;
+    text-align: center;
+}
+
+.grey__current {
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.grey--footer {
+    font-size: 0.8em;
+    color: white;
+    padding: 0.8em 0;
+}
+
+.item {
+    /* afin de pouvoir positionner certaines enfants de cet élément de façon absolue, le parent (l'article de class item) DOIT avoir une propriété position avec une autre valeur que static (valeur par défaut)
+    afin de ne pas bousiller notre bel affichage, on va donner à position une valeur qui ne va pas modifier son positionnement dans le flow
+    */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 0.3em;
+    margin: 0.3em;
+    transition: all .5s;
+}
+
+.item:hover {
+    /* on ajoute au survol de l'article un effet d'ombrage autour de la boite avec box-shadow 
+    1ere valeur : le nb de pixels à l'horizontal où la couleur va apparaitre en plein
+    2eme valeur : le nb de pixels à la verticale où la couleur va apparaitre en plein
+    3ème valeur : nb de pixels pour appliquer un dégradé de la couleur
+    4ème valeur : la couleur
+    */
+    box-shadow: 0px 0 5px #ccc;
+}
+
+.item__image img {
+    /* on force l'image à ne pas dépasser la largeur de son container*/
+    max-width: 100%;
+}
+
+.item__content {
+    margin: auto;
+}
+
+.item__content__category {
+    text-transform: uppercase;
+    color: #ccc;
+    border-bottom: 1px solid #ccc;
+    font-size: .7em;
+    padding: .3em;
+    margin: .3em 0;
+    font-weight: 700;
+}
+
+.item__content__name  {
+    font-weight: 700;
+    font-size: 1.3em;
+    margin: .5em 0;
+}
+
+.item__content__desc {
+    font-size: .8em;
+}
+
+.item__buy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: #c80000;
+    padding: 1em;
+    margin-top: 1em;
+    transition: all .5s;
+}
+
+.item__buy:hover {
+    background-color: #333;
+}
+
+.item__buy__cart {
+    font-size: .8em;
+}
+
+.item__buy__price {
+    font-weight: 700;
+}
+
+.item__buy__price--old {
+    /* on raye le prix */
+    text-decoration: line-through;
+    /* on met le texte à la bonne taille */
+    font-size: .8em;
+    /* on enlève le gras */
+    font-weight: normal;
+}
+
+.item__sales {
+   /* on souhaire sortir cet élément du flow naturel de la page afin de le positionner avec pour référence la position du parent */ 
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   background-color: #666;
+   color: white;
+   width: 70px;
+   height: 70px;
+   font-size: 1.4em;
+   line-height: 60px;
+   font-weight: 700;
+   text-align: center;
+   border: 4px solid #ccc;
+   /* avec le border-radius, on peut créer un cercle parfait en partant d'une carrée (width = height = 70px) et en mettant une valeur de radius de 50%*/
+   border-radius: 50%;
+}
+
+.sales__fixed {
+    /* on veut une position fixe à l'écran : 
+    - soit position: fixed
+    - soit position: sticky
+    */
+    position: fixed;
+    /* truc magique de css : avec la fonction calc, on peut faire des opérations de math sur des dimensions qui n'ont pas les mêmes unités
+    le navigateur se charge de calculer le résultat au pixel près
+    */
+    top: calc((100% - 100px)/2);
+    left: 0;
+    width: 25px;
+    padding: 15px 5px;
+    font-size: .8em;
+    /* on triche pour forcer l'affichage en vertical
+    la div n'est pas assez large pour afficher plusieurs lettres, cette propriété autorise le découpage d'un mot lettre par lettre
+    */
+    word-break: break-all;
+    text-transform: uppercase;
+    background-color: #c80000;
+    /* on décompose le border-radius pour arrondir seulement les coins droits de la div */
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+main {
+    /* on donne largeur à mon main */
+    width: 800px;
+    margin: 1em auto;
+    /* le header a été sorti du flow, <main> devient donc le 1er élément à se positionner naturellement
+    afin qu'on puisse voir le haut du container, on applique une marge top supplémentaire afin de décaler la position du block vers le bas (sous le header qui ne bougera plus)*/
+    margin-top: 120px;
+    /* on indique que c'est cet élément qui va devoir gérer la disposition des articles à l'intérieur */
+    display: flex;
+    justify-content: space-around;
+    /* on indique au conteneur qu'il ne doit pas squizzer tous les éléments sur une seule ligne, il va devoir gérer le retour à la ligne s'il n'a plus assez de place */
+    flex-wrap: wrap;
+}
+
+#panier {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+form{
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    padding: 1.2em 0 2.5em 0;
+}
+
+
+
+.where {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1em;
+    
+}
+
+.gauche {
+    display: flex;
+    flex-direction: column;
+}
+
+.droite {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-adress {
+    display: flex;
+    flex-direction: column;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.adresse {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-compl {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-weight: bold;
+    color: #777;   
+    margin: 2em 0; 
+    font-size: 1.2em;
+}
+
+.little--label {
+    color: #333;
+    margin: 0.2em 0;
+}
+
+.choix {
+    margin: 5px;
+}
+
+.champ {
+    border: none;
+    background-color: #FFF1EF ;
+    box-shadow: 0px 2px 2px #dbdada  ;
+}
+
+/* tableau */
+
+.annuler {
+    border: none;
+    background-color: rgb(241, 241, 241);
+    color: #c80000;
+    text-decoration:underline;
+}
+
+.bis{
+    background-color: white;
+}
+
+.quantité {
+    display: flex;
+    padding: 0.1em;
+    border: none;
+    justify-content: center;
+}
+
+th{
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+td{
+    text-align: center;
+    padding: 0.5em;
+}
+
+table {
+    border:1px solid #ccc;
+    margin: 2em 0 1em 0 ;
+}
+
+.gris {
+    background-color: rgb(241, 241, 241);
+}
+.total {
+    font-weight: bold;
+    color: #c80000;
+    font-size: 1.3em;
+}
+
+.total__com {
+    font-weight: bold;
+
+}
+.montant--total {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0px 2px 2px #dbdada  ;
+    margin: 1em;
+    padding: 2em;
+
+}
+
+.bas {
+    border-bottom: 2px solid #ccc ;
+}
+
+.continue {
+    background-color: #dbdada;
+    padding: 1em;
+    font-weight: bold;
+}
+.valider {
+    background-color: #c80000;
+    padding: 1em;
+    color: white;
+    font-weight: bold;
+
+}
+
+.validation {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0px 2px 2px #dbdada  ;
+    margin: 1em;
+    padding: 1.5em;
+}
